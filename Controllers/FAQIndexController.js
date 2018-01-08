@@ -69,6 +69,7 @@ function FAQIndexController(fs, us, fss, timeout, $state) {
             answer: this.answer,
             displayOrder: this.order
         }
+        console.table(faq);
         const promise = fs.putFaq(faq, this.faqId);
         promise.then(
             response => {

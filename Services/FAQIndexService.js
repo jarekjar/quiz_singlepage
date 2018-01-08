@@ -13,6 +13,7 @@ function FAQIndexService(http) {
     };
 
     this.sortFaq = (faq) => {
+        console.log(faq);
         faq.sort(orderByProperty('displayOrder', 'faqCategoryId'));
         let sortedFaq = {};
         for (let i = 0; i < faq.length; i++) {
@@ -20,8 +21,9 @@ function FAQIndexService(http) {
             if (sortedFaq.hasOwnProperty(cat)) {} else {
                 sortedFaq[cat] = [];
             }
-            sortedFaq[cat].push(faq[i])
+            sortedFaq[cat].push(faq[i]);
         }
+        console.log(sortedFaq)
         return sortedFaq;
     }
 
