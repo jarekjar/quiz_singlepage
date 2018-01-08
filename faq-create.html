@@ -1,0 +1,47 @@
+<div ng-controller="FAQController as f">
+    <div class="login-box" ng-model="login">
+        <div id="fade" ng-show="l.fade" class="ng-hide"></div>
+        <div id="modal" ng-show="l.fade" class="ng-hide">
+            <img id="loader" src="facebook.gif" />
+        </div>
+        <div class="col card formCard ng-cloak hoverable z-depth-5">
+            <form name="f.myForm" novalidate>
+                <div class="card-content">
+                    <h2 class="center blue-text text-darken-3">Create an FAQ</h2>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            <select class="selected" ng-model="f.options" material-select ng-options="item as item.name for item in f.catList" required>
+                                <option value="" disabled>Choose a category</option>
+                            </select>
+                            <span style="color:red" ng-if="!f.options">Please choose a category</span>
+                        </div>
+                        <div class="input-field col s10 offset-s1">
+                            <label for="question">Question</label>
+                            <input type="text" name="question" ng-model="f.question" class="validate" required/>
+                            <span style="color:red" ng-if="f.myForm.question.$invalid && f.myForm.question.$touched">Please enter a question</span>
+                        </div>
+                        <div class="input-field col s10 offset-s1">
+                            <label for="answer">Answer</label>
+                            <input type="text" name="answer" ng-model="f.answer" class="validate" required/>
+                            <span style="color:red" ng-if="f.myForm.answer.$invalid && f.myForm.answer.$touched">Please enter an answer</span>
+                        </div>
+                        <div class="input-field col s10 offset-s1">
+                            <label for="order">Display Order</label>
+                            <input type="number" name="order" ng-model="f.order" class="validate" required/>
+                            <span style="color:red" ng-if="f.myForm.order.$invalid && f.myForm.order.$touched">Please enter display order number</span>
+                        </div>
+                    </div>
+                    <div style="color: red; float:right;">{{f.errorMessage}}</div>
+                </div>
+                <div class="card-action right-align">
+                    <input type="reset" id="reset" class="btn-flat grey-text waves-effect">
+                    <button type="submit" class="btn blue darken-3 waves-effect waves-light" ng-click="f.postFAQ()">Create</button>
+                </div>
+                <!-- <pre>{{f | json}}</pre> -->
+
+
+                <!-- debug object -->
+            </form>
+        </div>
+    </div>
+</div>

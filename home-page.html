@@ -1,0 +1,17 @@
+<div ng-controller="HomeController as h">
+    
+        
+    
+    <div class="login-box" ng-model="login">
+        <div class="col card formCard ng-cloak hoverable z-depth-5" ng-show="h.welcome">
+            <form name="myForm" novalidate>
+                <div class="card-content">
+                    <h2 class="center blue-text text-darken-3 ng-cloak">Welcome, {{h.user}}!!</h2>
+                    <a ng-click="h.logout()" href="#">Not you? Click here to log out.</a>
+                </div>
+                <!-- debug object -->
+                <!-- <pre>{{h | json}}</pre> -->
+            </form>
+        </div>
+    </div>
+</div>

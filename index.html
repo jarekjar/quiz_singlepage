@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="Quiz App" ng-controller="HomeController as x">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <script src="jquery.js"></script>
+    <script src="angular.js"></script>
+    <script src="angular-ui-router.js"></script>
+    <script src="app.js"></script>
+    <script src="Controllers/HomeController.js"></script>
+    <script src="Services/UserService.js"></script>
+    <script src="Services/LoginService.js"></script>
+    <script src="Controllers/Login.js"></script>
+    <script src="Controllers/FAQIndexController.js"></script>
+    <script src="Services/FAQIndexService.js"></script>
+    <script src="Services/FAQService.js"></script>
+    <script src="Controllers/FAQController.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center">My Quiz App</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li>
+                        <a ui-sref="home" style="font-size: 20px;">Home</a>
+                    </li>
+                    <li>
+                        <a ui-sref="quiz" style="font-size: 20px;">Quizzes</a>
+                    </li>
+                    <li>
+                        <a ui-sref="faq" style="font-size: 20px;">FAQ</a>
+                    </li>
+                    <li>
+                        <a ng-click="x.logout();" style="font-size: 20px;" class="brand-logo right">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    
+    <pre>{{json}}</pre>
+
+    <ui-view></ui-view>
+
+</body>
+
+
+</html>

@@ -1,0 +1,67 @@
+.nav-wrapper {
+    background-color: #1565c0;
+}
+
+
+.login-box {
+    margin: auto;
+    width: 50%;
+    margin-top: 30px;
+}
+
+#fade {
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #ababab;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .70;
+    filter: alpha(opacity=80);
+}
+
+
+
+#modal {
+    display: block;
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    border: 3px solid #ababab;
+    box-shadow:1px 1px 10px #ababab;
+    border-radius:20px;
+    background-color: white;
+    z-index: 1002;
+    text-align:center;
+    overflow: auto;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
+
+ul.dropdown-content.select-dropdown li span {
+    color: #1565c0;
+}
+
+.add {
+    float: right;
+}
+
+h1 {
+    color: #1565c0;
+    font-weight: bold;
+}
+
+.edit-button {
+    float: right;
+    margin-right: 20px;
+}

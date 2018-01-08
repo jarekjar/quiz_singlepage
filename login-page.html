@@ -1,0 +1,33 @@
+<div class="login-box" ng-controller="Login as l" ng-model="login">
+        <div id="fade" ng-show="l.fade" class="ng-hide"></div>
+        <div id="modal" ng-show="l.fade" class="ng-hide">
+            <img id="loader" src="facebook.gif" />
+        </div>
+        <div class="col card formCard hoverable z-depth-5">
+            <form name="l.myForm" novalidate>
+                <div class="card-content">
+                    <h2 class="center blue-text text-darken-3">Login</h2>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            <label for="email">Email address</label>
+                            <input type="email" class="validate" name="email" ng-model="l.email" required/>
+                            <span style="color:red" ng-if="l.myForm.email.$invalid && l.myForm.email.$touched">Please enter a valid email</span>
+                        </div>
+                        <div class="input-field col s10 offset-s1">
+                            <label for="password">Password</label>
+                            <input type="password" class="validate" name="password" ng-model="l.password" required/>
+                            <span style="color:red" ng-if="l.myForm.password.$invalid && l.myForm.password.$touched">Please enter a valid password</span>
+                        </div>
+                    </div>
+                    <div style="color: red; float:right;" class="ng-cloak">{{l.errorMessage}}</div>
+                </div>
+                <div class="card-action right-align">
+                    <input type="button" id="register" class="btn-flat grey-text waves-effect" value="click here to register" ng-click="l.goRegister()">
+                    <input type="submit" class="btn blue darken-3 waves-effect waves-light" value="Login" ng-click="l.userLogin();">
+                </div>
+
+                <!-- debug object -->
+                <!-- <pre>{{l | json}}</pre> -->
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,62 @@
+<div ng-controller="FAQIndexController as f">
+    <div class="login-box">
+        <h1 class="center">FAQ Index</h1>
+        <div class="col card formCard ng-cloak hoverable z-depth-5">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li ng-repeat="(category, value) in f.faqList">
+                    <div class="collapsible-header">
+                        <i class="material-icons">comment</i>
+                        {{category}}</div>
+                    <div class="collapsible-body" ng-repeat="stuff in value">
+                        <span>
+                            <strong>Q: {{stuff.question}}</strong>
+                        </span>
+                        <br>
+                        <span>A: {{stuff.answer}}</span>
+                        <br>
+                        <span></span>Order: {{stuff.displayOrder}}</span>
+                        <a class="btn-floating red" style="float: right;">
+                            <i class="material-icons" ng-click="f.deleteFaq(stuff.id)">clear</i>
+                        </a>
+                        <a class="btn-floating edit-button blue modal-trigger" style="margin-left: 20px" data-target="editMod" modal>
+                            <i class="material-icons" ng-click="f.editFaq(stuff.id, stuff.faqCategoryId, stuff.question, stuff.answer, stuff.displayOrder, category)">border_color</i>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <button type="submit" class="btn blue darken-3 waves-effect waves-light add" ng-click="f.goCreate()" style="margin-bottom: 20px;">Add an FAQ</button>
+        </div>
+    </div>
+    <div id="editMod" class="modal">
+        <div class="modal-content">
+            <h4>Edit FAQ</h4>
+            <div class="input-field col s10 offset-s1">
+                <select class="selected" ng-model="f.options" material-select ng-options="item as item.name for item in f.catList track by item.id"
+                    required>
+                    <option value="" disabled>Choose a category</option>
+                </select>
+                <span style="color:red" ng-if="!f.options">Please choose a category</span>
+            </div>
+            <div class="input-field col s10 offset-s1">
+                <label for="question" class="active">Question</label>
+                <input type="text" name="question" ng-model="f.question" class="validate" required/>
+                <span style="color:red" ng-if="f.myForm.question.$invalid && f.myForm.question.$touched">Please enter a question</span>
+            </div>
+            <div class="input-field col s10 offset-s1">
+                <label for="answer">Answer</label>
+                <input type="text" name="answer" ng-model="f.answer" class="validate" required/>
+                <span style="color:red" ng-if="f.myForm.answer.$invalid && f.myForm.answer.$touched">Please enter an answer</span>
+            </div>
+            <div class="input-field col s10 offset-s1">
+                <label for="order">Display Order</label>
+                <input type="number" name="order" ng-model="f.order" class="validate" required/>
+                <span style="color:red" ng-if="f.myForm.order.$invalid && f.myForm.order.$touched">Please enter display order number</span>
+            </div>
+            <span ng-model="faqId"></span>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="modal-action modal-close btn blue darken-3 waves-effect waves-light" value="Edit!" ng-click="f.update()"
+                style="margin-right: 40px;">
+        </div>
+    </div>
+</div>
