@@ -15,7 +15,7 @@
                             <span style="color:red" ng-if="q.myForm.quizName.$invalid && q.myForm.quizName.$touched">Please enter a quiz name</span>
                         </div>
                         <div class="input-field col s10 offset-s1">
-                            <select required>
+                            <select required ng-model="answerType">
                                 <option value="" disabled selected>Choose your option</option>
                                 <option value="1">Single</option>
                                 <option value="2">Multiple</option>

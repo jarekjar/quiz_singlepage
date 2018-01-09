@@ -6,6 +6,7 @@
 
     function QuizController($state, qs) {
         $('select').material_select();
+        
         this.goCreate = () => {
             $state.go('quizCreate');
         };
@@ -14,8 +15,14 @@
             const promise = qs.getEmployeeId();
             promise.then(
                 response => {
-                    qs.sendQuiz().then(
+                    const quizData = {
+                        "quizName": this.quizName,
+                        "defaultAnswerType": this.answerType,
+                        "employerId": response.data.item.employerId
+                      };
+                    qs.postQuiz(quizData).then(
                         response => {
+                            console.log(response);
                             Materialize.toast('Quiz has been added!', 2000, 'blue', function () {
                                 $state.go('quiz');
                             });

@@ -1,8 +1,23 @@
-<div ng-controller="QuizController as q">
+<div ng-controller="QuizIndexController as q">
     <h1 class="center">Quiz Index</h1>
-    <div class="col card formCard hoverable z-depth-5">
-        <div class="card-action right-align">
-            <input type="submit" class="btn blue darken-3 waves-effect waves-light" value="Add Quiz" ng-click="q.goCreate();">
+    <div class="row">
+        <div class="col s8 offset-s2 card formCard hoverable z-depth-5 quizForm">
+            <div class="row quizCard">
+                <div class="col m3" ng-repeat="quiz in q.quizList">
+                    <div class="card blue lighten-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">{{quiz.quizName}}</span>
+                        </div>
+                        <div class="card-action blue center valign center">
+                            <a href="#">Edit</a>
+                            <a href="#">Take</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action right-align">
+                <input type="submit" class="btn blue darken-3 waves-effect waves-light" value="Add Quiz" ng-click="q.goCreate();">
+            </div>
         </div>
     </div>
 </div>
