@@ -4,6 +4,7 @@ angular.module("Quiz App")
 HomeController.$inject = ['UserService', '$state'];
 
 function HomeController(us, $state) {
+    if ($state.current.name === 'home') {
     const promise = us.getUser();
     promise.then(
         response => {
@@ -16,7 +17,8 @@ function HomeController(us, $state) {
                 $state.go('login');
             });
         }
-    );
+        );
+    }
     this.logout = () => {
         const promise = us.goLogout();
         promise.then(

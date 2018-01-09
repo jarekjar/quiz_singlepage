@@ -1,9 +1,9 @@
 angular.module("Quiz App")
     .controller("Register", Register);
 
-Register.$inject = ["RegisterService"];
+Register.$inject = ["RegisterService", "$state"];
 
-function Register(rs) {
+function Register(rs, $state) {
     this.captureReg = () => {
         if(this.myForm.$valid){
         this.errorMessage = "";
@@ -19,8 +19,9 @@ function Register(rs) {
             response => {
                 this.fade = false;
                 console.log(response);
-                alert(response.config.data.firstName + ", your user has been created");
-                window.location.href = "../login/login.html";
+                Materialize.toast('Succesfully Created User!', 2000, 'blue', function () {
+                    $state.go('login');
+                });
             },
             err => {
                 this.fade = false;
@@ -35,6 +36,6 @@ function Register(rs) {
         } 
     };
     this.login = () => {
-        window.location.href = "../login/login.html";
-    }
-};
+        $state.go('login');
+    };
+}

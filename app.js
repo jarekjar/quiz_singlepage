@@ -35,7 +35,7 @@
             name: 'register',
             url: '/register',
             templateUrl: 'register-page.html',
-            controller: "HomeController"
+            controller: "Register"
         };
         $urlRouterProvider.otherwise('home');
         $stateProvider.state(homeState);

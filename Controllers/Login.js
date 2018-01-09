@@ -4,13 +4,14 @@
 
     Login.$inject = ["LoginService", '$timeout', '$state'];
 
-    function Login(ls, timeout, state) {
+    function Login(ls, timeout, $state) {
 
         timeout(function(){Materialize.updateTextFields()}); 
 
         this.goRegister = () => {
-            window.location.replace("../register/register.html");
+            $state.go("register");
         }
+
         this.userLogin = () => {
             if (this.myForm.$valid) {
                 this.fade = true;
@@ -23,7 +24,7 @@
                 promise.then(
                     response => {
                         this.fade = false;
-                        state.go("home");
+                        $state.go("home");
                     },
                     err => {
                         this.fade = false;

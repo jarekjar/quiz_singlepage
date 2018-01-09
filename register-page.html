@@ -1,0 +1,50 @@
+<div class="login-box" ng-controller="Register as r">
+    <div id="fade" ng-show="r.fade" class="ng-hide"></div>
+    <div id="modal" ng-show="r.fade" class="ng-hide">
+        <img id="loader" src="facebook.gif" />
+    </div>
+    <div class="col card formCard hoverable z-depth-5">
+        <form name="r.myForm" novalidate>
+            <div class="card-content">
+                <h2 class="center blue-text text-darken-3">Register</h2>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <label for="firstName">First Name</label>
+                        <input type="text" name="firstName" ng-model="r.firstName" class="validate" required/>
+                        <span style="color:red" ng-if="r.myForm.firstName.$invalid && r.myForm.firstName.$touched">Please enter a first name</span>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" name="lastName" ng-model="r.lastName" class="validate" required/>
+                        <span style="color:red" ng-if="r.myForm.lastName.$invalid && r.myForm.lastName.$touched">Please enter a last name</span>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                        <label for="email">Email address</label>
+                        <input type="email" name="email" ng-model="r.email" class="validate" required/>
+                        <span style="color:red" ng-if="r.myForm.email.$invalid && r.myForm.email.$touched">Please enter a valid email</span>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" ng-model="r.password" class="validate" required/>
+                        <span style="color:red" ng-if="r.myForm.password.$invalid && r.myForm.password.$touched">Please enter a valid password</span>
+                    </div>
+                    <div class="input-field col s10 offset-s1
+                        ">
+                        <label for="rPassword">Re-enter Password</label>
+                        <input type="password" ng-model="r.rPassword" name="rPassword" class="validate" required/>
+                        <span style="color:red" ng-if="r.myForm.rPassword.$viewValue !== r.myForm.password.$viewValue && r.myForm.rPassword.$touched">Both passwords must match</span>
+                    </div>
+                </div>
+                <div style="color: red; float:right;">{{r.errorMessage}}</div>
+            </div>
+            <div class="card-action right-align">
+                <input type="button" class="btn-flat waves-effect left" value="Returning User? Click here to log in" ng-click="r.login();">
+                <input type="reset" id="reset" class="btn-flat grey-text waves-effect">
+                <button type="submit" class="btn blue darken-3 waves-effect waves-light" ng-click="r.captureReg();">Register</button>
+            </div>
+
+            <!-- debug object -->
+            <!-- <pre>{{r | json}}</pre> -->
+        </form>
+    </div>
+</div>
