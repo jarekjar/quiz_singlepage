@@ -13,6 +13,12 @@
             templateUrl: 'quiz-page.html',
             controller: "QuizController"
         };
+        const quizCreateState = {
+            name: 'quizCreate',
+            url: '/quiz/create',
+            templateUrl: 'quiz-create.html',
+            controller: "QuizController"
+        };
         const faqState = {
             name: 'faq',
             url: '/faq',
@@ -44,5 +50,6 @@
         $stateProvider.state(loginState);
         $stateProvider.state(registerState);
         $stateProvider.state(createFaqState);
+        $stateProvider.state(quizCreateState);
     });
 })();

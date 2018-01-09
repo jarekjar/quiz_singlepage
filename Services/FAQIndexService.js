@@ -4,10 +4,11 @@ angular.module("Quiz App")
 FAQIndexService.$inject = ["$http"]
 
 function FAQIndexService($http) {
+    const urlStart = 'https://pacoima-ypi.azurewebsites.net/api/';
     this.getFAQ = () => {
         return $http({
             method: 'GET',
-            url: 'https://pacoima-ypi.azurewebsites.net/api/faqs/user',
+            url: urlStart + 'faqs/user',
             withCredentials: true
         });
     };
@@ -30,7 +31,7 @@ function FAQIndexService($http) {
     this.putFaq = (faq, id) => {
         return $http({
             method: 'PUT',
-            url: 'https://pacoima-ypi.azurewebsites.net/api/faqs/' + id,
+            url: urlStart + 'faqs/' + id,
             withCredentials: true,
             data: faq
         });
@@ -39,12 +40,12 @@ function FAQIndexService($http) {
     this.deleteFaq = (id) => {
         return $http({
             method: 'DELETE',
-            url: 'https://pacoima-ypi.azurewebsites.net/api/faqs/' + id,
+            url: urlStart + 'faqs/' + id,
             withCredentials: true
         });
     }
 
-    // i stole the code from ../
+    // I stole the code from http://www.growingwiththeweb.com/2014/07/order-a-js-array-by-multiple-properties.html
     function orderByProperty(prop) {
         var args = Array.prototype.slice.call(arguments, 1);
         return function (a, b) {

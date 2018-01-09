@@ -58,8 +58,8 @@ function FAQIndexController(fs, us, fss, timeout, $state) {
         this.faqId = faqID;
         this.options = {
             id: catID
-        }
-    }
+        };
+    };
 
     this.update = () => {
         const faq = {
@@ -68,7 +68,7 @@ function FAQIndexController(fs, us, fss, timeout, $state) {
             question: this.question,
             answer: this.answer,
             displayOrder: this.order
-        }
+        };
         console.table(faq);
         const promise = fs.putFaq(faq, this.faqId);
         promise.then(
@@ -81,9 +81,9 @@ function FAQIndexController(fs, us, fss, timeout, $state) {
                 Materialize.toast('FAQ could not be edited, try again later', 2000, 'blue', function () {
                     $state.reload();
                 });
-            },
-        )
-    }
+            }
+        );
+    };
 
 
     this.deleteFaq = (faqID) => {
@@ -99,6 +99,6 @@ function FAQIndexController(fs, us, fss, timeout, $state) {
                     $state.reload();
                 });
             }
-        )
-    }
-};
+        );
+    };
+}

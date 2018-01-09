@@ -1,3 +1,8 @@
-<div>
+<div ng-controller="QuizController as q">
     <h1 class="center">Quiz Index</h1>
+    <div class="col card formCard hoverable z-depth-5">
+        <div class="card-action right-align">
+            <input type="submit" class="btn blue darken-3 waves-effect waves-light" value="Add Quiz" ng-click="q.goCreate();">
+        </div>
+    </div>
 </div>
