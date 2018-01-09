@@ -11,7 +11,7 @@ function FAQController(fs, timeout, us, $state) {
             this.catList = response.data.items;
             timeout(function () {
                 $('select').material_select();
-            })
+            });
         },
         err => {
             console.log("Error retrieving cats")
@@ -39,7 +39,7 @@ function FAQController(fs, timeout, us, $state) {
                     console.log("error!")
                     Materialize.toast('FAQ could not be created', 4000, 'blue')
                 }
-            )
+            );
         } else {
             this.myForm.question.$touched = true;
             this.myForm.answer.$touched = true;
@@ -59,6 +59,6 @@ function FAQController(fs, timeout, us, $state) {
                 alert("you have failed me")
                 console.log(err);
             }
-        )
-    }
+        );
+    };
 };

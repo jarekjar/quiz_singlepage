@@ -1,4 +1,5 @@
-(function(){angular.module("Quiz App", ['ui.router'])
+(function(){
+    angular.module("Quiz App", ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider){
         const homeState = {
             name: 'home',
@@ -10,7 +11,7 @@
             name: 'quiz',
             url: '/quiz',
             templateUrl: 'quiz-page.html',
-            controller: "HomeController"
+            controller: "QuizController"
         };
         const faqState = {
             name: 'faq',
@@ -18,14 +19,12 @@
             templateUrl: 'faq-page.html',
             controller: "FAQIndexController" 
         };
-
         const createFaqState = {
             name: 'create',
             url: '/faq/create',
             templateUrl: 'faq-create.html',
             controller: 'FAQController'
-        }
-        
+        };      
         const loginState = {
             name: 'login',
             url: '/login',
@@ -38,7 +37,6 @@
             templateUrl: 'register-page.html',
             controller: "HomeController"
         };
-
         $urlRouterProvider.otherwise('home');
         $stateProvider.state(homeState);
         $stateProvider.state(quizState);

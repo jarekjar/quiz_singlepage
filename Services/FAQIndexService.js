@@ -3,9 +3,9 @@ angular.module("Quiz App")
 
 FAQIndexService.$inject = ["$http"]
 
-function FAQIndexService(http) {
+function FAQIndexService($http) {
     this.getFAQ = () => {
-        return http({
+        return $http({
             method: 'GET',
             url: 'https://pacoima-ypi.azurewebsites.net/api/faqs/user',
             withCredentials: true
@@ -15,20 +15,20 @@ function FAQIndexService(http) {
     this.sortFaq = (faq) => {
         console.log(faq);
         faq.sort(orderByProperty('displayOrder', 'faqCategoryId'));
-        let sortedFaq = {};
+        const sortedFaq = {};
         for (let i = 0; i < faq.length; i++) {
-            let cat = faq[i].category;
-            if (sortedFaq.hasOwnProperty(cat)) {} else {
+            const cat = faq[i].category;
+            if (!sortedFaq.hasOwnProperty(cat)) {
                 sortedFaq[cat] = [];
             }
             sortedFaq[cat].push(faq[i]);
         }
-        console.log(sortedFaq)
+        console.log(sortedFaq);
         return sortedFaq;
     }
 
     this.putFaq = (faq, id) => {
-        return http({
+        return $http({
             method: 'PUT',
             url: 'https://pacoima-ypi.azurewebsites.net/api/faqs/' + id,
             withCredentials: true,
@@ -37,14 +37,14 @@ function FAQIndexService(http) {
     };
 
     this.deleteFaq = (id) => {
-        return http({
+        return $http({
             method: 'DELETE',
             url: 'https://pacoima-ypi.azurewebsites.net/api/faqs/' + id,
             withCredentials: true
         });
     }
 
-
+    // i stole the code from ../
     function orderByProperty(prop) {
         var args = Array.prototype.slice.call(arguments, 1);
         return function (a, b) {
