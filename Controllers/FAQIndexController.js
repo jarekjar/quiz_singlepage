@@ -101,4 +101,4 @@ function FAQIndexController(fs, us, fss, timeout, $state) {
             }
         );
     };
-}
+};

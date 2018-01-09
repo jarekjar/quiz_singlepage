@@ -1,7 +1,7 @@
 angular.module("Quiz App")
     .service("FAQService", FAQService);
 
-FAQService.$inject = ["$http"]
+FAQService.$inject = ["$http"];
 
 function FAQService($http){
     this.getCats = () => {
@@ -20,6 +20,6 @@ function FAQService($http){
             data: faq,
             withCredentials: true
         });
-    }
+    };
 }
     

@@ -2,11 +2,37 @@
     angular.module("Quiz App")
         .controller("QuizController", QuizController);
 
-    QuizController.$inject = ['$state']
+    QuizController.$inject = ['$state', 'QuizService'];
 
-    function QuizController($state) {
+    function QuizController($state, qs) {
+        $('select').material_select();
         this.goCreate = () => {
-            $state.go('quizCreate')
+            $state.go('quizCreate');
+        };
+
+        this.createQuiz = () => {
+            const promise = qs.getEmployeeId();
+            promise.then(
+                response => {
+                    qs.sendQuiz().then(
+                        response => {
+                            Materialize.toast('Quiz has been added!', 2000, 'blue', function () {
+                                $state.go('quiz');
+                            });
+                        },
+                        err => {
+                            Materialize.toast('Could not add quiz, try again later', 2000, 'blue', function () {
+                                $state.reload();
+                            });
+                        }
+                    );
+                },
+                err => {
+                    Materialize.toast('Could not get employee ID, try again later', 2000, 'blue', function () {
+                        $state.reload();
+                    });
+                }
+            );
         };
     }
 })();

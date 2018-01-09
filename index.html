@@ -23,21 +23,22 @@
     <script src="Controllers/RegisterController.js"></script>
     <script src="Services/RegisterService.js"></script>
     <script src="Controllers/QuizController.js"></script>
+    <script src="Services/QuizService.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <nav>
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo center">My Quiz App</a>
-                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <ul id="nav-mobile" class="left hide-on-med-and-down ng-cloak" ng-show="x.navbarHide()">
                     <li>
-                        <a ui-sref="home" style="font-size: 20px;">Home</a>
+                        <a ui-sref="home" ui-sref-active="active" style="font-size: 20px;">Home</a>
                     </li>
                     <li>
-                        <a ui-sref="quiz" style="font-size: 20px;">Quizzes</a>
+                        <a ui-sref="quiz" ui-sref-active="active" style="font-size: 20px;">Quizzes</a>
                     </li>
                     <li>
-                        <a ui-sref="faq" style="font-size: 20px;">FAQ</a>
+                        <a ui-sref="faq" ui-sref-active="active" style="font-size: 20px;">FAQ</a>
                     </li>
                     <li>
                         <a ng-click="x.logout();" style="font-size: 20px;" class="brand-logo right">Logout</a>

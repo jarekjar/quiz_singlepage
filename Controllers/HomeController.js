@@ -4,6 +4,13 @@ angular.module("Quiz App")
 HomeController.$inject = ['UserService', '$state'];
 
 function HomeController(us, $state) {
+    this.navbarHide = () => {
+        if ($state.current.name === 'login' || $state.current.name === 'register') {
+            return false;
+        } else {
+            return true;
+        }
+    }
     if ($state.current.name === 'home') {
     const promise = us.getUser();
     promise.then(

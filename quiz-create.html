@@ -1,0 +1,42 @@
+<div ng-controller="QuizController as q">
+    <div class="login-box" ng-model="q.login">
+        <!-- <div id="fade" ng-show="l.fade" class="ng-hide"></div>
+        <div id="modal" ng-show="l.fade" class="ng-hide">
+            <img id="loader" src="facebook.gif" />
+        </div> -->
+        <div class="col card formCard ng-cloak hoverable z-depth-5">
+            <form name="q.myForm" novalidate>
+                <div class="card-content">
+                    <h2 class="center blue-text text-darken-3">Create a quiz</h2>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            <label for="quizName">Quiz Name</label>
+                            <input type="text" name="quizName" ng-model="q.quizName" class="validate" required/>
+                            <span style="color:red" ng-if="q.myForm.quizName.$invalid && q.myForm.quizName.$touched">Please enter a quiz name</span>
+                        </div>
+                        <div class="input-field col s10 offset-s1">
+                            <select>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Single</option>
+                                <option value="2">Multiple</option>
+                                <option value="3">Open</option>
+                            </select>
+                            <label>Answer Type</label>
+                        </div>
+                        <div class="input-field col s10 offset-s1">
+                        </div>
+                    </div>
+                    <div style="color: red; float:right;"{{q.errorMessage}}</div>
+                </div>
+                <div class="card-action right-align">
+                    <input type="reset" id="reset" class="btn-flat grey-text waves-effect">
+                    <button type="submit" class="btn blue darken-3 waves-effect waves-light" ng-click="q.createQuiz()">Create</button>
+                </div>
+                <!-- <pre>{{f | json}}</pre> -->
+
+
+                <!-- debug object -->
+            </form>
+        </div>
+    </div>
+</div>
