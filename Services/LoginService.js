@@ -7,9 +7,8 @@ function LoginService(http){
     this.post = (profile) => {
         return http({
             method: 'POST',
-            url: 'https://pacoima-ypi.azurewebsites.net/api/users/login/force',
-            data: profile,
-            withCredentials: true
+            url: 'http://localhost:53268/api/users/login',
+            data: profile
         });
     };
 }

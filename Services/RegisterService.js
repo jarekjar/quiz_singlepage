@@ -8,9 +8,8 @@ function RegisterService(http){
     this.post = (profile) => {
         return http({
             method: 'POST',
-            url: 'https://pacoima-ypi.azurewebsites.net/api/users/register/employer',
-            data: profile,
-            withCredentials: true
+            url: 'http://localhost:53268/api/users',
+            data: profile
         });
     };
 }

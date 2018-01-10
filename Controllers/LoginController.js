@@ -2,9 +2,9 @@
     angular.module("Quiz App")
         .controller("Login", Login);
 
-    Login.$inject = ["LoginService", '$timeout', '$state'];
+    Login.$inject = ["LoginService", '$timeout', '$state', '$window'];
 
-    function Login(ls, timeout, $state) {
+    function Login(ls, timeout, $state, $window) {
 
         timeout(function(){Materialize.updateTextFields()}); 
 
@@ -20,15 +20,18 @@
                     email: this.email,
                     password: this.password
                 };
-                const promise = ls.post(profile)
+                const promise = ls.post(profile);
                 promise.then(
                     response => {
                         this.fade = false;
-                        $state.go("home");
+                        console.log(response);
+                        $window.localstorage = (response.data);
+                       $state.go("home");
                     },
                     err => {
                         this.fade = false;
-                        this.errorMessage = err.data.message
+                        //this.errorMessage = err.data.message;
+                        Materialize.toast(err.data.message, 3000, 'blue');
                     });
             } else {
                 this.myForm.email.$touched = true;
