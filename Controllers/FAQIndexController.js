@@ -9,9 +9,6 @@ function FAQIndexController(fs, us, fss, timeout, $state) {
     promise.then(
         response => {
             this.faqList = fs.sortFaq(response.data.items);
-            $('.collapsible').collapsible({
-                accordion: true
-            });
         },
         err => {
             console.log("stuff");

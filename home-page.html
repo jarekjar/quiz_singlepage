@@ -7,7 +7,8 @@
                     <a ng-click="h.logout()" href="#">Not you? Click here to log out.</a>
                 </div>
                 <div>
-                    <p>Call from my api to my database and back:  </p><br><p ng-repeat="stuff in h.myData">{{stuff}}</p>
+                    <p>Call from my api to my database and back:  </p><br><div ng-repeat="stuff in h.myData"><p>  Id: {{stuff.id}} Email: {{stuff.email}} Password: {{stuff.password}}</p>
+                    </div>
                 </div>
                 <!--debug object -->
                 <!-- <pre>{{h | json}}</pre> -->

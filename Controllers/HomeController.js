@@ -16,7 +16,7 @@ function HomeController(us, $state) {
     const getBack = us.getUserInfo();
     getBack.then(
         response => {
-            console.log(response.data);
+            console.log(response);
             this.myData = response.data;
         },
         err => {
