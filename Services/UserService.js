@@ -19,5 +19,12 @@ function UserService(http){
             url: 'https://pacoima-ypi.azurewebsites.net/api/users/logout',
             withCredentials: true
         });
+    };
+
+    this.getUserInfo = () => {
+        return http({
+            method: 'GET',
+            url: 'http://localhost:53268/api/get'
+        });
     }
 }

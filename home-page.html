@@ -1,7 +1,4 @@
 <div ng-controller="HomeController as h">
-    
-        
-    
     <div class="login-box" ng-model="login">
         <div class="col card formCard ng-cloak hoverable z-depth-5" ng-show="h.welcome">
             <form name="myForm" novalidate>
@@ -9,7 +6,10 @@
                     <h2 class="center blue-text text-darken-3 ng-cloak">Welcome, {{h.user}}!!</h2>
                     <a ng-click="h.logout()" href="#">Not you? Click here to log out.</a>
                 </div>
-                <!-- debug object -->
+                <div>
+                    <p>Call from my api to my database and back:  </p><br><p ng-repeat="stuff in h.myData">{{stuff}}</p>
+                </div>
+                <!--debug object -->
                 <!-- <pre>{{h | json}}</pre> -->
             </form>
         </div>

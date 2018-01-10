@@ -4,13 +4,26 @@ angular.module("Quiz App")
 HomeController.$inject = ['UserService', '$state'];
 
 function HomeController(us, $state) {
+    console.log($state.current);
     this.navbarHide = () => {
         if ($state.current.name === 'login' || $state.current.name === 'register') {
             return false;
         } else {
             return true;
         }
-    }
+    };
+
+    const getBack = us.getUserInfo();
+    getBack.then(
+        response => {
+            console.log(response.data);
+            this.myData = response.data;
+        },
+        err => {
+            console.log("no response");
+        }
+    );
+
     if ($state.current.name === 'home') {
     const promise = us.getUser();
     promise.then(
@@ -38,6 +51,6 @@ function HomeController(us, $state) {
                 alert("you have failed me");
                 console.log(err);
             }
-        )
-    }
-};
+        );
+    };
+}
