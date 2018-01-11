@@ -23,23 +23,23 @@
                     password: this.password
                 };
                 Materialize.toast('Logging In...', 2000, 'blue', function () {
-
-                    const promise = ls.post(profile);
-                    promise.then(
-                        response => {
-                            //this.fade = false;
-
+                
+                const promise = ls.post(profile);
+                promise.then(
+                    response => {
+                        //this.fade = false;
+                        
                             $window.localstorage = (response.data);
                             $state.go("home");
+                        
+                        console.log(response);
 
-                            console.log(response);
-
-                        },
-                        err => {
-                            // this.fade = false;
-                            //this.errorMessage = err.data.message;
-                            Materialize.toast(err.data.message, 3000, 'blue');
-                        });
+                    },
+                    err => {
+                        // this.fade = false;
+                        //this.errorMessage = err.data.message;
+                        Materialize.toast(err.data.message, 3000, 'blue');
+                    });
                 });
             } else {
                 this.myForm.email.$touched = true;
