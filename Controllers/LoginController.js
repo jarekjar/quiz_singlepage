@@ -6,7 +6,9 @@
 
     function Login(ls, timeout, $state, $window) {
 
-        timeout(function(){Materialize.updateTextFields()}); 
+        timeout(function () {
+            Materialize.updateTextFields()
+        });
 
         this.goRegister = () => {
             $state.go("register");
@@ -14,25 +16,31 @@
 
         this.userLogin = () => {
             if (this.myForm.$valid) {
-                this.fade = true;
+                //this.fade = true;
                 this.errorMessage = "";
                 const profile = {
                     email: this.email,
                     password: this.password
                 };
-                const promise = ls.post(profile);
-                promise.then(
-                    response => {
-                        this.fade = false;
-                        console.log(response);
-                        $window.localstorage = (response.data);
-                       $state.go("home");
-                    },
-                    err => {
-                        this.fade = false;
-                        //this.errorMessage = err.data.message;
-                        Materialize.toast(err.data.message, 3000, 'blue');
-                    });
+                Materialize.toast('Logging In...', 2000, 'blue', function () {
+
+                    const promise = ls.post(profile);
+                    promise.then(
+                        response => {
+                            //this.fade = false;
+
+                            $window.localstorage = (response.data);
+                            $state.go("home");
+
+                            console.log(response);
+
+                        },
+                        err => {
+                            // this.fade = false;
+                            //this.errorMessage = err.data.message;
+                            Materialize.toast(err.data.message, 3000, 'blue');
+                        });
+                });
             } else {
                 this.myForm.email.$touched = true;
                 this.myForm.password.$touched = true;
