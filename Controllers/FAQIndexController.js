@@ -4,16 +4,25 @@ angular.module("Quiz App")
 FAQIndexController.$inject = ['FAQIndexService', 'UserService', 'FAQService', '$timeout', '$state'];
 
 function FAQIndexController(fs, us, fss, timeout, $state) {
+    let currentUser = 0;
     $('#editMod').modal();
-    const promise = fs.getFAQ();
-    promise.then(
+    us.getUser().then(
         response => {
-            this.faqList = fs.sortFaq(response.data.items);
+            const promise = fs.getFAQ(response.data.item.id);
+            promise.then(
+                response => {
+                    this.faqList = fs.sortFaq(response.data.items);
+                },
+                err => {
+                    console.log("stuff");
+                }
+            );
         },
         err => {
-            console.log("stuff");
+            console.log("Error retrieving user")
         }
     );
+
 
     this.goCreate = () => {
         $state.go('create');

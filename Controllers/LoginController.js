@@ -28,8 +28,6 @@
                 promise.then(
                     response => {
                         //this.fade = false;
-                        
-                            $window.localstorage = (response.data);
                             $state.go("home");
                         
                         console.log(response);
@@ -37,7 +35,7 @@
                     },
                     err => {
                         // this.fade = false;
-                        //this.errorMessage = err.data.message;
+                        this.errorMessage = err.data.message;
                         Materialize.toast(err.data.message, 3000, 'blue');
                     });
                 });

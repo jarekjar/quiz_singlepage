@@ -8,7 +8,7 @@ function RegisterService(http){
     this.post = (profile) => {
         return http({
             method: 'POST',
-            url: 'http://localhost:53268/api/users',
+            url: 'http://localhost:3024/api/register',
             data: profile
         });
     };

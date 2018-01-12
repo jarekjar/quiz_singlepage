@@ -5,10 +5,10 @@ FAQIndexService.$inject = ["$http"]
 
 function FAQIndexService($http) {
     const urlStart = 'https://pacoima-ypi.azurewebsites.net/api/';
-    this.getFAQ = () => {
+    this.getFAQ = (id) => {
         return $http({
             method: 'GET',
-            url: urlStart + 'faqs/user',
+            url: 'http://localhost:3024/api/getfaqs/' + id,
             withCredentials: true
         });
     };

@@ -4,28 +4,42 @@ angular.module("Quiz App")
 FAQController.$inject = ['FAQService', '$timeout', 'UserService', '$state']
 
 function FAQController(fs, timeout, us, $state) {
-    
+    let currentUser = 0;
     const promise = fs.getCats();
     promise.then(
         response => {
+            console.log(response);
             this.catList = response.data.items;
+            us.getUser().then(
+                response => {
+                    currentUser = response.data.item.id;
+                },
+                err => {
+                    console.log("Error retrieving user") 
+                }
+            );
             timeout(function () {
                 $('select').material_select();
             });
+            
         },
         err => {
             console.log("Error retrieving cats")
         }
     );
 
+
     this.postFAQ = () => {
+        console.log(currentUser);
         if (this.myForm.$valid) {
             const faq = {
                 "faqCategoryId": this.options.id,
                 "question": this.question,
                 "answer": this.answer,
-                "displayOrder": this.order
-            }
+                "displayOrder": this.order,
+                "userId": currentUser,
+                "category": this.options.name
+            };
             
             const promise = fs.post(faq);
             promise.then(

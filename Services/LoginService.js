@@ -7,8 +7,9 @@ function LoginService(http){
     this.post = (profile) => {
         return http({
             method: 'POST',
-            url: 'http://localhost:53268/api/users/login',
-            data: profile
+            url: 'http://localhost:3024/api/login',
+            data: profile,
+            withCredentials: true
         });
     };
 }

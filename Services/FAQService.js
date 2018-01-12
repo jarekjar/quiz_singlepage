@@ -7,7 +7,7 @@ function FAQService($http){
     this.getCats = () => {
         return $http({
             method: 'GET',
-            url: 'https://pacoima-ypi.azurewebsites.net/api/faqcategories',
+            url: 'http://localhost:3024/api/getfaqcats',
             withCredentials: true
         });
     };
@@ -16,7 +16,7 @@ function FAQService($http){
     this.post = (faq) => {
         return $http({
             method: 'POST',
-            url: 'https://pacoima-ypi.azurewebsites.net/api/faqs',
+            url: 'http://localhost:3024/api/faq',
             data: faq,
             withCredentials: true
         });
