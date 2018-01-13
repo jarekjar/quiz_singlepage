@@ -63,7 +63,8 @@ function FAQIndexController(fs, us, fss, timeout, $state) {
         this.order = parseInt(order);
         this.faqId = faqID;
         this.options = {
-            id: catID
+            id: catID,
+            name: cat
         };
     };
 
@@ -73,10 +74,11 @@ function FAQIndexController(fs, us, fss, timeout, $state) {
             faqCategoryID: this.options.id,
             question: this.question,
             answer: this.answer,
-            displayOrder: this.order
+            displayOrder: this.order,
+            category: this.options.name
         };
         console.table(faq);
-        const promise = fs.putFaq(faq, this.faqId);
+        const promise = fs.putFaq(faq);
         promise.then(
             response => {
                 Materialize.toast('FAQ has been edited!', 2000, 'blue', function () {

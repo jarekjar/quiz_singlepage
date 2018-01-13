@@ -8,7 +8,7 @@ function FAQIndexService($http) {
     this.getFAQ = (id) => {
         return $http({
             method: 'GET',
-            url: 'http://localhost:3024/api/getfaqs/' + id,
+            url: 'http://localhost:3024/api/faq/' + id,
             withCredentials: true
         });
     };
@@ -28,10 +28,10 @@ function FAQIndexService($http) {
         return sortedFaq;
     }
 
-    this.putFaq = (faq, id) => {
+    this.putFaq = (faq) => {
         return $http({
             method: 'PUT',
-            url: urlStart + 'faqs/' + id,
+            url: 'http://localhost:3024/api/faq',
             withCredentials: true,
             data: faq
         });
@@ -40,8 +40,9 @@ function FAQIndexService($http) {
     this.deleteFaq = (id) => {
         return $http({
             method: 'DELETE',
-            url: urlStart + 'faqs/' + id,
-            withCredentials: true
+            url: 'http://localhost:3024/api/faq/' + id,
+            withCredentials: true,
+            data: id
         });
     }
 
